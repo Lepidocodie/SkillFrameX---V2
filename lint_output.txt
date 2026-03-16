@@ -1,0 +1,10 @@
+
+> final-project@0.1.0 lint
+> eslint
+
+
+E:\Redesign\SkillFrameX\app\account\page.tsx
+  4:10  warning  'BookOpen' is defined but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 1 problem (0 errors, 1 warning)
+

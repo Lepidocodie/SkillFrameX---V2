@@ -1,0 +1,58 @@
+
+> final-project@0.1.0 lint
+> eslint
+
+(node:53872) ESLintIgnoreWarning: The ".eslintignore" file is no longer supported. Switch to using the "ignores" property in "eslint.config.js": https://eslint.org/docs/latest/use/configure/migration-guide#ignoring-files
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+E:\Redesign\SkillFrameX\app\account\components\ProfileHeader.tsx
+  2:10  warning  'Trophy' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\Redesign\SkillFrameX\app\account\components\TopicPieChart.tsx
+  56:15  error  Error: Cannot reassign variable after render completes
+
+Reassigning `cumulativeValue` after render has completed can cause inconsistent behavior on subsequent renders. Consider using state instead.
+
+E:\Redesign\SkillFrameX\app\account\components\TopicPieChart.tsx:56:15
+  54 |             {pieData.map((d, i) => {
+  55 |               const dashoffset = 100 - cumulativeValue;
+> 56 |               cumulativeValue += d.value;
+     |               ^^^^^^^^^^^^^^^ Cannot reassign `cumulativeValue` after render completes
+  57 |               
+  58 |               const isHovered = hoveredSlice?.name === d.name;
+  59 |                 react-hooks/immutability
+
+E:\Redesign\SkillFrameX\app\account\page.tsx
+  4:8   warning  'Link' is defined but never used         @typescript-eslint/no-unused-vars
+  5:10  warning  'User' is defined but never used         @typescript-eslint/no-unused-vars
+  5:16  warning  'BookOpen' is defined but never used     @typescript-eslint/no-unused-vars
+  5:26  warning  'Trophy' is defined but never used       @typescript-eslint/no-unused-vars
+  5:34  warning  'Target' is defined but never used       @typescript-eslint/no-unused-vars
+  5:42  warning  'PlayCircle' is defined but never used   @typescript-eslint/no-unused-vars
+  5:54  warning  'CheckCircle' is defined but never used  @typescript-eslint/no-unused-vars
+  5:67  warning  'PieChart' is defined but never used     @typescript-eslint/no-unused-vars
+  5:77  warning  'Activity' is defined but never used     @typescript-eslint/no-unused-vars
+
+E:\Redesign\SkillFrameX\app\blog\[id]\page.tsx
+  83:159  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  83:182  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+E:\Redesign\SkillFrameX\app\components\CourseCard.tsx
+  6:10  warning  'Clock' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\Redesign\SkillFrameX\app\components\NavBar.tsx
+  6:27  warning  'GraduationCap' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\Redesign\SkillFrameX\app\components\ui\OnboardingBanner.tsx
+  9:9  warning  'router' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+E:\Redesign\SkillFrameX\app\page.tsx
+  9:10  warning  'SearchX' is defined but never used     @typescript-eslint/no-unused-vars
+  9:43  warning  'TrendingUp' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\Redesign\SkillFrameX\mock-api\courses-mock-api-main\server.js
+  1:20  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  2:14  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+Γ£û 20 problems (5 errors, 15 warnings)
+
