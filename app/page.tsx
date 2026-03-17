@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import CourseCard from "./components/CourseCard";
-import HeroSlider from "./components/HeroSlider";
+import HeroSlider from "./components/hero-slider/HeroSlider";
 import { Course } from "@/types/schema";
 import { getAllCourses, getCategories } from "@/app/service/api";
 import { Loader2, Sparkles, Zap } from "lucide-react";
