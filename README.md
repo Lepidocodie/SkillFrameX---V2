@@ -1,4 +1,4 @@
-<![CDATA[<div align="center">
+<div align="center">
 
 # 🎓 SkillFrameX — V2
 
@@ -225,4 +225,3 @@ This project is open-source and available under the [MIT License](LICENSE).
 <div align="center">
   <sub>Built with ❤️ by <a href="https://github.com/Lepidocodie">Lepidocodie</a></sub>
 </div>
-]]>
