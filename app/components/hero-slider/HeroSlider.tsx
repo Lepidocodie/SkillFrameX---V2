@@ -29,7 +29,7 @@ export default function HeroSlider({ courses }: HeroSliderProps) {
 
   useEffect(() => {
     if (courses.length === 0) return;
-    const timer = setInterval(nextSlide, 6000); // 6s interval
+    const timer = setInterval(nextSlide, 6000);
     return () => clearInterval(timer);
   }, [nextSlide, courses.length]);
 
@@ -38,22 +38,27 @@ export default function HeroSlider({ courses }: HeroSliderProps) {
   }
 
   return (
-    <div className="relative w-full h-[85vh] min-h-[700px] overflow-hidden bg-background rounded-2xl md:rounded-[2rem] border border-white/5 shadow-2xl mx-auto max-w-[1920px] group/slider">
-      {/* Decorative Tech Accents on Container */}
-      <div className="absolute top-0 left-0 w-32 h-[1px] bg-gradient-to-r from-primary to-transparent z-30"></div>
-      <div className="absolute bottom-0 right-0 w-32 h-[1px] bg-gradient-to-l from-primary to-transparent z-30"></div>
-      <div className="absolute top-0 left-0 w-[1px] h-32 bg-gradient-to-b from-primary to-transparent z-30"></div>
-      <div className="absolute bottom-0 right-0 w-[1px] h-32 bg-gradient-to-t from-primary to-transparent z-30"></div>
-
-      {/* Main Slider Track */}
+    <section
+      aria-roledescription="carousel"
+      aria-label="Featured courses"
+      className="relative w-full h-[85vh] min-h-[680px] overflow-hidden bg-background rounded-2xl md:rounded-[2rem] border border-border shadow-md mx-auto max-w-[1920px]"
+    >
+      {/* Slider Track */}
       <div
-        className="w-full h-full flex transition-transform duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform"
+        className="w-full h-full flex transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {courses.map((course, index) => {
           const isActive = currentIndex === index;
           return (
-            <div key={course.id} className="w-full h-full shrink-0 relative flex items-center group" data-active={isActive}>
+            <div
+              key={course.id}
+              className="w-full h-full shrink-0 relative flex items-center"
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`Slide ${index + 1} of ${courses.length}: ${course.name}`}
+              aria-hidden={!isActive}
+            >
               <SliderBackground course={course} isActive={isActive} isPriority={index === 0} />
               <SliderContent course={course} isActive={isActive} />
             </div>
@@ -68,6 +73,6 @@ export default function HeroSlider({ courses }: HeroSliderProps) {
         onNext={nextSlide}
         onDotClick={setCurrentIndex}
       />
-    </div>
+    </section>
   );
 }

@@ -2,7 +2,7 @@
 
 :root {
   /* BOLD AESTHETIC - Deep Space & Neon */
-  --background: oklch(0.18 0.02 260); /* Deep rich interstellar navy */
+  --background: oklch(0.13 0.015 250); /* Clean deep dark navy, BornToDev-style */
   --foreground: oklch(0.98 0.01 260); /* Off-white with a hint of blue */
 
   /* Primary: Electric Azure */
@@ -22,11 +22,13 @@
   --destructive: oklch(0.6 0.2 25);
 
   /* UI Elements */
-  --card: oklch(0.25 0.02 260 / 0.4);
+  --card: oklch(0.17 0.015 250);
   --card-foreground: oklch(0.95 0.01 260);
-  --border: oklch(0.4 0.05 260 / 0.2);
-  --input: oklch(0.3 0.03 260 / 0.5);
+  --muted: oklch(0.2 0.015 250);
+  --border: oklch(0.28 0.015 250 / 0.4);
+  --input: oklch(0.2 0.015 250 / 0.7);
   --ring: var(--primary);
+  --muted-foreground: oklch(0.65 0.02 260);
   
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
@@ -49,6 +51,8 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
 
   --font-sans: var(--font-inter), sans-serif;
   --font-display: var(--font-syne), sans-serif;
@@ -62,8 +66,8 @@
   --animate-float: float 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   --animate-float-fast: float 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   --animate-shine: shine 3s linear infinite;
-  --animate-reveal: reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-reveal: reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in-up: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   
   @keyframes float {
     0%, 100% { transform: translateY(0) rotate(-1deg); }
@@ -102,12 +106,6 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
-  /* Complex, deep background gradient that is visually striking */
-  background-image: 
-    radial-gradient(ellipse at top right, oklch(0.3 0.1 280 / 0.4), transparent 50%),
-    radial-gradient(circle at bottom left, oklch(0.2 0.08 240 / 0.5), transparent 60%),
-    linear-gradient(to bottom, transparent, oklch(0.15 0.03 260));
-  background-attachment: fixed;
 }
 
 /* Bold Typography Integration */
@@ -127,52 +125,30 @@ h1, h2, h3, h4, h5, h6, .font-display {
     text-wrap: balance;
   }
   
-  /* Advanced Glassmorphism */
-  .glass-panel {
-    @apply bg-card backdrop-blur-2xl border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.3)];
-    box-shadow: 
-      0 4px 24px -1px rgba(0,0,0,0.2),
-      inset 0 1px 0 0 rgba(255,255,255,0.1);
-  }
-  
-  /* Vibrant Text Gradients */
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white/90 to-white/40;
-  }
-  
+  /* Logo gradient — intentional brand mark, exempt from gradient-text ban */
   .text-gradient-primary {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent-purple to-accent-pink;
     background-size: 200% auto;
     animation: shine 6s linear infinite;
   }
+
+  /* Elevated surface */
+  .surface-elevated {
+    @apply bg-card border border-border;
+    box-shadow: 0 4px 24px -1px rgba(0,0,0,0.25);
+    transition: box-shadow 200ms ease-out, border-color 200ms ease-out;
+  }
   
-  .text-gradient-secondary {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary to-yellow-300;
+  .surface-elevated:hover {
+    box-shadow: 0 8px 32px -4px rgba(0,0,0,0.35);
+    border-color: oklch(0.35 0.02 250 / 0.5);
   }
 
   /* Interaction Effects */
   .hover-lift {
-    @apply transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_20px_40px_-10px_rgba(14,165,233,0.3)];
+    @apply transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_32px_-8px_rgba(0,0,0,0.4)];
   }
-  
-  /* Bold Button Glow */
-  .glow-effect {
-    @apply relative overflow-hidden transition-all duration-300;
-  }
-  
-  .glow-effect::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full transition-transform duration-700 ease-in-out z-10;
-  }
-  
-  .glow-effect:hover::before {
-    @apply translate-x-full;
-  }
-  
-  .glow-effect:active {
-    @apply scale-95;
-  }
-  
+
   /* Distinctive Focus Rings */
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;

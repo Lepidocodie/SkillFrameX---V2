@@ -65,8 +65,8 @@ function NavBarContent() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group relative z-10 focus-ring rounded-lg p-1 -ml-1">
-              <span className="text-3xl font-display font-black tracking-tighter text-white drop-shadow-sm transition-transform duration-300 group-hover:scale-105">
-                SkillFrame<span className="text-gradient-primary">X</span>
+              <span className="text-3xl font-display font-black tracking-tighter text-foreground drop-shadow-sm transition-transform duration-300 group-hover:scale-105">
+                SkillFrame<span className="text-primary">X</span>
               </span>
             </Link>
 
@@ -81,7 +81,8 @@ function NavBarContent() {
                   value={searchTerm}
                   onChange={handleSearch}
                   placeholder="Master a new skill today..."
-                  className="block w-full pl-12 pr-6 py-3 border border-border rounded-full leading-5 bg-input text-foreground placeholder-slate-400 focus:outline-none focus:bg-background/80 focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm transition-all duration-300 hover:bg-input/80 backdrop-blur-md shadow-inner"
+                  aria-label="Search courses"
+                  className="block w-full pl-12 pr-6 py-3 border border-border rounded-full leading-5 bg-input text-foreground placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm transition-all duration-200"
                 />
               </div>
             </div>
@@ -93,7 +94,7 @@ function NavBarContent() {
                 <NavLink href="/blog">Blog</NavLink>
               </div>
 
-              <div className="h-6 w-px bg-white/10 mx-2"></div>
+              <div className="h-6 w-px bg-border mx-2"></div>
 
               <Link href="/account" className="group flex items-center gap-4 pl-2 focus-ring rounded-full md:rounded-xl">
                 <div className="text-right hidden lg:block">
@@ -108,7 +109,10 @@ function NavBarContent() {
             <div className="md:hidden flex items-center gap-4">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-slate-300 hover:text-white p-2 hover:bg-white/10 rounded-full transition-colors"
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
+                className="text-muted-foreground hover:text-foreground p-2 hover:bg-muted rounded-xl transition-colors duration-200"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -119,19 +123,19 @@ function NavBarContent() {
 
       {/* Mobile Menu Dropdown & Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-40 bg-background/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
         onClick={() => setIsMobileMenuOpen(false)}
       />
 
       <div
-        className={`fixed top-0 right-0 bottom-0 w-3/4 max-w-sm z-50 bg-slate-900/95 backdrop-blur-2xl border-l border-white/10 shadow-2xl transform transition-transform duration-300 ease-out md:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 right-0 bottom-0 w-3/4 max-w-sm z-50 bg-card/95 backdrop-blur-2xl border-l border-border shadow-2xl transform transition-transform duration-300 ease-out md:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
         <div className="p-6 space-y-8">
           <div className="flex items-center justify-between">
-            <span className="text-xl font-bold text-white">Menu</span>
-            <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-slate-400 hover:text-white">
+            <span className="text-xl font-bold text-foreground">Menu</span>
+            <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-muted-foreground hover:text-foreground">
               <X size={24} />
             </button>
           </div>
@@ -143,7 +147,7 @@ function NavBarContent() {
               value={searchTerm}
               onChange={handleSearch}
               placeholder="Search courses..."
-              className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-10 pr-4 text-white focus:outline-none focus:border-primary/50"
+              className="w-full bg-input border border-border rounded-xl py-3 pl-10 pr-4 text-foreground focus:outline-none focus:border-primary/50"
             />
           </div>
 
@@ -154,12 +158,12 @@ function NavBarContent() {
           </div>
 
           <div className="absolute bottom-8 left-6 right-6">
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-primary/10 to-accent-purple/10 border border-white/5">
+            <div className="p-4 rounded-2xl bg-muted border border-border">
               <div className="flex items-center gap-4 mb-3">
                 <Avatar name="Student User" size="md" showProBadge={true} />
                 <div>
-                  <p className="text-sm font-bold text-white font-display">Student Account</p>
-                  <p className="text-xs text-slate-400">View Profile</p>
+                  <p className="text-sm font-bold text-foreground font-display">Student Account</p>
+                  <p className="text-xs text-muted-foreground">View Profile</p>
                 </div>
               </div>
             </div>
@@ -173,10 +177,10 @@ function NavBarContent() {
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <Link
     href={href}
-    className="relative px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors group overflow-hidden"
+    className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group overflow-hidden"
   >
     <span className="relative z-10">{children}</span>
-    <span className="absolute inset-0 bg-white/5 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-lg duration-300"></span>
+    <span className="absolute inset-0 bg-primary/5 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-lg duration-300"></span>
   </Link>
 );
 
@@ -184,7 +188,7 @@ const MobileNavLink = ({ href, children, onClick }: { href: string; children: Re
   <Link
     href={href}
     onClick={onClick}
-    className="flex items-center justify-between p-4 rounded-xl text-lg font-medium text-slate-300 hover:bg-white/5 hover:text-white transition-all group"
+    className="flex items-center justify-between p-4 rounded-xl text-lg font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all group"
   >
     {children}
     <ChevronRight size={18} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />

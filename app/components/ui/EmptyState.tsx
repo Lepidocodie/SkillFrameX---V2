@@ -46,7 +46,7 @@ export function EmptyState({
   return (
     <div className={`flex flex-col items-center justify-center py-24 px-6 text-center rounded-[2.5rem] w-full max-w-2xl mx-auto group ${getVariantClasses()}`}>
       <div className="p-6 bg-white/5 rounded-full mb-8 relative">
-        <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
         <div className="relative z-10">{getIcon()}</div>
       </div>
       

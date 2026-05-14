@@ -31,16 +31,13 @@ export function ActivityChart({ totalCompleted }: ActivityChartProps) {
   const maxValue = Math.max(...weeklyData.map((d) => d.value), 10); 
 
   return (
-    <div className="glass-panel border-white/10 bg-gradient-to-br from-card/80 to-card/40 rounded-3xl p-8 flex flex-col h-full relative overflow-hidden group shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgba(0,136,255,0.15)] transition-all duration-500 lg:col-span-2">
+    <div className="bg-card border border-border rounded-3xl p-8 flex flex-col h-full relative overflow-hidden group shadow-md hover:shadow-lg transition-all duration-500 lg:col-span-2">
       
-      {/* Enhanced Background Noise & Lighting */}
-      <div className="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none z-0 bg-[url('/noise.png')]"></div>
-      <div className="absolute -top-24 -left-24 w-64 h-64 bg-primary/20 rounded-full blur-[80px] pointer-events-none group-hover:scale-150 transition-transform duration-1000 ease-out"></div>
-      <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] pointer-events-none group-hover:scale-150 transition-transform duration-1000 ease-out"></div>
+
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 relative z-10 gap-4">
         <h3 className="text-xl font-display font-bold text-foreground flex items-center gap-2.5">
-          <div className="p-2 bg-white/5 rounded-xl border border-white/10 text-primary shadow-inner">
+          <div className="p-2 bg-muted rounded-xl border border-border text-primary shadow-inner">
             <Activity size={20} />
           </div>
           Learning Activity
@@ -59,26 +56,26 @@ export function ActivityChart({ totalCompleted }: ActivityChartProps) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 flex-1 relative z-10">
         
         {/* --- Left Stats Area --- */}
-        <div className="col-span-1 flex flex-col justify-center gap-8 border-b md:border-b-0 md:border-r border-white/10 pb-6 md:pb-0 md:pr-6">
+        <div className="col-span-1 flex flex-col justify-center gap-8 border-b md:border-b-0 md:border-r border-border pb-6 md:pb-0 md:pr-6">
            <div className="space-y-1.5 animate-in fade-in slide-in-from-left-4 duration-500">
-             <span className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+             <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-2">
                <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_5px_rgba(34,197,94,0.8)]"></div>
                Completed
              </span>
              <div className="flex items-baseline gap-2">
-               <span className="text-5xl font-display font-black text-white drop-shadow-md tracking-tight">{totalCompleted}</span>
-               <span className="text-sm text-slate-500 font-medium">Lessons</span>
+               <span className="text-5xl font-display font-black text-foreground drop-shadow-sm tracking-tight">{totalCompleted}</span>
+               <span className="text-sm text-muted-foreground font-medium">Lessons</span>
              </div>
            </div>
 
            <div className="space-y-1.5 animate-in fade-in slide-in-from-left-4 duration-500 delay-150">
-             <span className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+             <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-2">
                <div className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_5px_rgba(0,136,255,0.8)]"></div>
                Time Spent
              </span>
              <div className="flex items-baseline gap-2">
-               <span className="text-3xl font-display font-black text-white drop-shadow-md tracking-tight">12.5</span>
-               <span className="text-sm text-slate-500 font-medium">Hours</span>
+               <span className="text-3xl font-display font-black text-foreground drop-shadow-sm tracking-tight">12.5</span>
+               <span className="text-sm text-muted-foreground font-medium">Hours</span>
              </div>
            </div>
         </div>
@@ -88,9 +85,9 @@ export function ActivityChart({ totalCompleted }: ActivityChartProps) {
           
           {/* Horizontal Grid Lines */}
           <div className="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20 pb-6 z-0">
-             <div className="border-t border-white/10 w-full border-dashed"></div>
-             <div className="border-t border-white/10 w-full border-dashed"></div>
-             <div className="border-t border-white/10 w-full border-dashed"></div>
+             <div className="border-t border-border w-full border-dashed"></div>
+             <div className="border-t border-border w-full border-dashed"></div>
+             <div className="border-t border-border w-full border-dashed"></div>
           </div>
 
           {/* Render Bars */}
@@ -107,7 +104,7 @@ export function ActivityChart({ totalCompleted }: ActivityChartProps) {
                 onMouseLeave={() => setHoveredDay(null)}
               >
                 {/* Tooltip Popup */}
-                <div className={`absolute -top-8 bg-card/90 backdrop-blur-md border border-white/10 text-white text-xs font-bold py-1 px-2.5 rounded-lg shadow-xl transition-all duration-300 transform ${
+                <div className={`absolute -top-8 bg-card/90 backdrop-blur-md border border-border text-foreground text-xs font-bold py-1 px-2.5 rounded-lg shadow-xl transition-all duration-300 transform ${
                     isHovered ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-2 scale-95 pointer-events-none'
                   }`}
                 >
@@ -116,7 +113,7 @@ export function ActivityChart({ totalCompleted }: ActivityChartProps) {
 
                 {/* Animated Bar */}
                 <div 
-                  className="w-full max-w-[2.5rem] rounded-t-xl rounded-b-sm cursor-pointer transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] relative overflow-hidden flex-shrink-0 border border-white/5 border-b-0"
+                  className="w-full max-w-[2.5rem] rounded-t-xl rounded-b-sm cursor-pointer transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] relative overflow-hidden flex-shrink-0 border border-border border-b-0"
                   style={{ 
                     height: `${heightPercentage}%`,
                     opacity: isOthersHovered ? 0.3 : 1,
@@ -126,12 +123,12 @@ export function ActivityChart({ totalCompleted }: ActivityChartProps) {
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-primary/60 to-primary"></div>
                   {/* Glossy top highlight */}
-                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-white/30 rounded-t-xl"></div>
+                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-primary/30 rounded-t-xl"></div>
                 </div>
                 
                 {/* Day Label */}
                 <span className={`text-[10px] sm:text-xs font-bold transition-colors duration-300 ${
-                  isHovered ? 'text-white drop-shadow-md' : 'text-slate-400'
+                  isHovered ? 'text-foreground drop-shadow-sm' : 'text-muted-foreground'
                 }`}>
                   {d.day}
                 </span>

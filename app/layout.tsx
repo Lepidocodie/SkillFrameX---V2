@@ -33,9 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${syne.variable} ${inter.variable} font-sans antialiased selection:bg-primary/30 selection:text-white`}
+        className={`${syne.variable} ${inter.variable} font-sans antialiased selection:bg-primary/30 selection:text-primary-foreground`}
       >
-        <div className="fixed inset-0 -z-10  opacity-20 mix-blend-overlay pointer-events-none"></div>
+
         <Navbar />
         {children}
         <OnboardingBanner />

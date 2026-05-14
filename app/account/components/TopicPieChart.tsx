@@ -38,15 +38,12 @@ export function TopicPieChart({ pieData, totalEnrolled }: TopicPieChartProps) {
   }, [pieData]);
 
   return (
-    <div className="glass-panel border-white/10 bg-gradient-to-br from-card/80 to-card/40 rounded-3xl p-8 flex flex-col h-full relative overflow-hidden group shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgba(168,85,247,0.15)] transition-all duration-500">
-      {/* Enhanced Background Noise & Lighting */}
-      <div className="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none z-0 bg-[url('/noise.png')]"></div>
-      <div className="absolute -top-24 -right-24 w-64 h-64 bg-accent-purple/20 rounded-full blur-[80px] pointer-events-none group-hover:scale-150 transition-transform duration-1000 ease-out"></div>
-      <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/20 rounded-full blur-[80px] pointer-events-none group-hover:scale-150 transition-transform duration-1000 ease-out"></div>
+    <div className="bg-card border border-border rounded-3xl p-8 flex flex-col h-full relative overflow-hidden group shadow-md hover:shadow-lg transition-all duration-500">
+
 
       <div className="flex items-center justify-between mb-8 relative z-10">
         <h3 className="text-xl font-display font-bold text-foreground flex items-center gap-2.5">
-          <div className="p-2 bg-white/5 rounded-xl border border-white/10 text-accent-purple shadow-inner">
+          <div className="p-2 bg-muted rounded-xl border border-border text-accent-purple shadow-inner">
             <PieChart size={20} />
           </div>
           Focus Areas
@@ -72,7 +69,7 @@ export function TopicPieChart({ pieData, totalEnrolled }: TopicPieChartProps) {
               fill="transparent"
               stroke="currentColor"
               strokeWidth="3"
-              className="text-white/5"
+              className="text-border"
             />
             
             {/* Slices */}
@@ -113,20 +110,20 @@ export function TopicPieChart({ pieData, totalEnrolled }: TopicPieChartProps) {
           </svg>
 
           {/* Center Info Hole (Dynamic on hover) */}
-          <div className="absolute inset-0 m-7 rounded-full bg-card/40 backdrop-blur-xl border border-white/10 shadow-[inset_0_2px_15px_rgba(255,255,255,0.05),0_10px_30px_rgba(0,0,0,0.3)] flex items-center justify-center flex-col pointer-events-none transition-all duration-300">
+          <div className="absolute inset-0 m-7 rounded-full bg-card/40 backdrop-blur-xl border border-border shadow-inner flex items-center justify-center flex-col pointer-events-none transition-all duration-300">
              {hoveredSlice ? (
                <div className="text-center animate-in zoom-in-95 duration-200">
                  <div className="text-3xl font-display font-black tracking-tight drop-shadow-md" style={{ color: hoveredSlice.color }}>
                    {hoveredSlice.value}%
                  </div>
-                 <div className="text-[10px] text-slate-300 font-bold uppercase tracking-widest max-w-[85px] truncate px-2 mt-0.5 opacity-80">
+                 <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest max-w-[85px] truncate px-2 mt-0.5 opacity-80">
                    {hoveredSlice.name}
                  </div>
                </div>
              ) : (
                <div className="text-center animate-in fade-in duration-300 flex flex-col items-center">
-                 <span className="text-3xl font-display font-black text-white drop-shadow-lg leading-none">{totalEnrolled}</span>
-                 <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Courses</span>
+                 <span className="text-3xl font-display font-black text-foreground drop-shadow-sm leading-none">{totalEnrolled}</span>
+                 <span className="text-[9px] text-muted-foreground font-bold uppercase tracking-widest mt-1">Courses</span>
                </div>
              )}
           </div>
@@ -143,23 +140,23 @@ export function TopicPieChart({ pieData, totalEnrolled }: TopicPieChartProps) {
                 key={i} 
                 className={`flex items-center gap-2.5 p-2.5 rounded-xl border transition-all duration-300 cursor-pointer ${
                   isHovered 
-                    ? 'border-white/20 bg-white/10 shadow-[0_4px_15px_rgba(0,0,0,0.2)] scale-[1.02]' 
-                    : 'border-transparent bg-white/5 hover:bg-white/10'
+                    ? 'border-primary/50 bg-muted shadow-md scale-[1.02]' 
+                    : 'border-transparent bg-muted/50 hover:bg-muted'
                 }`}
                 style={{ opacity: isOthersHovered ? 0.5 : 1 }}
                 onMouseEnter={() => setHoveredSlice(d)}
                 onMouseLeave={() => setHoveredSlice(null)}
               >
                 <div 
-                  className="w-3.5 h-3.5 rounded-full shadow-[inset_0px_2px_4px_rgba(255,255,255,0.4)]" 
+                  className="w-3.5 h-3.5 rounded-full shadow-sm" 
                   style={{ 
                     background: `linear-gradient(135deg, ${d.color}, ${d.color}aa)`,
-                    boxShadow: isHovered ? `0 0 10px ${d.color}80, inset 0px 2px 4px rgba(255,255,255,0.4)` : ''
+                    boxShadow: isHovered ? `0 0 10px ${d.color}80, inset 0px 2px 4px rgba(255,255,255,0.8)` : ''
                   }}
                 ></div>
                 <div className="flex flex-col overflow-hidden">
-                  <span className="text-[11px] font-bold text-slate-200 truncate leading-tight">{d.name}</span>
-                  <span className="text-[10px] font-medium text-slate-500 leading-tight">{d.value}%</span>
+                  <span className="text-[11px] font-bold text-foreground truncate leading-tight">{d.name}</span>
+                  <span className="text-[10px] font-medium text-muted-foreground leading-tight">{d.value}%</span>
                 </div>
               </div>
             );
